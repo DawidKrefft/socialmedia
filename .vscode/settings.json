@@ -9,6 +9,6 @@
     "**/.vs": true,
     "**/bin": true,
     "**/obj": true,
-    "**/node_modules": false
+    "**/node_modules": true
   }
 }

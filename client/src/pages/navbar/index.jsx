@@ -1,4 +1,3 @@
-// 2:48
 import { useState } from 'react';
 import {
   Box,
@@ -31,7 +30,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector(state => state.user);
-  const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
+  const isBigScreen = useMediaQuery('(min-width: 1000px)');
 
   const theme = useTheme();
   const neutralLight = theme.palette.neutral.light;
@@ -40,8 +39,8 @@ const Navbar = () => {
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
 
-  // const fullName = `${user.firstName} ${user.lastName}`;
-  const fullName = 'sir';
+  const fullName = `${user.firstName} ${user.lastName}`;
+  // const fullName = 'sir';
 
   return (
     <FlexBetween padding='1rem 6%' backgroundColor={alt}>
@@ -60,7 +59,7 @@ const Navbar = () => {
         >
           socialMediaApp
         </Typography>
-        {isNonMobileScreens && (
+        {isBigScreen && (
           <FlexBetween
             backgroundColor={neutralLight}
             borderRadius='8px'
@@ -75,7 +74,7 @@ const Navbar = () => {
         )}
       </FlexBetween>
       {/* Desktop Nav */}
-      {isNonMobileScreens ? (
+      {isBigScreen ? (
         <FlexBetween gap='2rem'>
           <IconButton onClick={() => dispatch(setMode())}>
             {theme.palette.mode === 'dark' ? (
@@ -119,7 +118,7 @@ const Navbar = () => {
       )}
 
       {/* Mobile Nav */}
-      {!isNonMobileScreens && isMobileMenuToggled && (
+      {!isBigScreen && isMobileMenuToggled && (
         <Box
           position='fixed'
           right='0'
